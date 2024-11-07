@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ paste.title }} - InfoShare</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">InfoShare</div>
+        <nav>
+            <a href="/" class="{% if request.path == '/' %}active{% endif %}">Главная</a>
+            <a href="/about" class="{% if request.path == '/about' %}active{% endif %}">О нас</a>
+            <a href="/contacts" class="{% if request.path == '/contacts' %}active{% endif %}">Контакты</a>
+        </nav>
+    </header>
+
+
+    <div class="main-container">
+        <div class="paste-card">
+            <div class="paste-title">{{ paste.title }}</div>
+            <div class="paste-meta">{{ paste.date }} | Автор: {{ paste.author }}</div>
+            <div class="paste-content">{{ paste.content }}</div>
+            <div class="like-button">Лайк {{ paste.likes }}</div>
+            <a href="/" class="back-button">← Назад</a>
+        </div>
+    </div>
+    
+    <footer>
+        © 2024 InfoShare. Все права защищены.
+    </footer>
+    
+    <html lang="ru">
+        <head>
+            <meta charset="UTF-8">
+            <title>{{ paste.title }}</title>
+            <style>
+                /* Стили для сохранения форматирования текста */
+                pre {
+                    white-space: pre-wrap;  /* Перенос строк */
+                    word-wrap: break-word;   /* Перенос длинных слов */
+                }
+            </style>
+        </head>
+        <body>
+            <p>Дата публикации: {{ paste.timestamp }}</p>
+        </body>
+        </html>

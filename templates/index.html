@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <title>InfoShare | Главная</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfoShare</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">InfoShare</div>
+        <nav>
+            <nav>
+                <a href="/" class="{% if request.path == '/' %}active{% endif %}">Главная</a>
+                <a href="/about" class="{% if request.path == '/about' %}active{% endif %}">О нас</a>
+                <a href="/contacts" class="{% if request.path == '/contacts' %}active{% endif %}">Контакты</a>
+            
+            </nav>
+            
+        </nav>
+    </header>
+    
+
+
+    
+    <footer>
+        &copy; 2024 InfoShare. Все права защищены.
+    </footer>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .search-form {
+            display: flex;
+            align-items: center;
+        }
+        .search-form input[type="text"] {
+            padding: 0.5em;
+            border: none;
+            border-radius: 5px;
+            margin-right: 5px;
+            outline: none;
+        }
+        .search-form button {
+            padding: 0.5em 1em;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .search-form button:hover {
+            background-color: #45a049;
+        }
+        .container {
+            padding: 1em;
+        }
+        .paste-form {
+            background-color: #444;
+            padding: 1em;
+            border-radius: 5px;
+            margin-bottom: 1em;
+        }
+        .paste-form input[type="text"], .paste-form textarea {
+            width: 100%;
+            padding: 0.5em;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #555;
+            color: #e0e0e0;
+        }
+        .paste-form button {
+            padding: 0.5em 1em;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .paste-form button:hover {
+            background-color: #45a049;
+        }
+        .pastes-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .pastes-list li {
+            background-color: #333;
+            padding: 1em;
+            border-radius: 5px;
+            margin-bottom: 0.5em;
+        }
+        .pastes-list h3 {
+            margin-top: 0;
+        }
+        .pastes-list a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .pastes-list a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            text-align: center;
+            padding: 1em;
+            font-size: 0.8em;
+            background-color: #333;
+            color: #e0e0e0;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="welcome-prompt">
+        {% if 'username' in session %}
+            <p>Привет, {{ session['username'] }}! <a href="{{ url_for('logout') }}">Выйти</a></p>
+        {% else %}
+        
+        {% endif %}
+    </div>
+
+    {% if 'username' in session %}
+    <div class="create-paste">
+        <h1>Создать пасту</h1>
+        <form action="/create_paste" method="post">
+            <input type="text" name="title" placeholder="Название пасты" required>
+            <textarea name="content" rows="6" placeholder="Напишите что-нибудь интересное..." required></textarea>
+            <button type="submit">Опубликовать</button>
+        </form>
+    </div>
+</header>
+
+    <!-- Заголовок "Последние пасты" перемещен ниже формы -->
+    <section class="past-list">
+        <h2>Последние пасты</h2>
+        <!-- Здесь выводятся последние пасты -->
+        <div class="pastes">
+            {% for paste in pastes %}
+            <div class="paste-card">
+                <div class="paste-title">{{ paste.title }}</div>
+                <div class="paste-meta">{{ paste.date }} | Автор: {{ paste.author }}</div>
+                <a href="{{ url_for('view_paste', paste_id=paste.id) }}" class="open-button">Открыть пасту</a>
+            </div>
+            {% endfor %}
+        </div>
+        </div>
+    </section>
+</body>
+        
+    </div>
+    {% else %}
+    <div class="login-prompt">
+        Для создания паст вам необходимо <a href="{{ url_for('login') }}">войти</a> или <a href="{{ url_for('register') }}">зарегистрироваться</a>.
+    </div>
+    {% endif %}
+</body>
+</html>

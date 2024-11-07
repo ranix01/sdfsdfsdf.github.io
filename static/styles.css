@@ -1,0 +1,435 @@
+/* Общие настройки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.main-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Заголовок */
+header {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.5rem;
+    color: #ffffff;
+    background-color: #292828;
+    border-bottom: 2px solid #ffd700;
+    margin-bottom: 20px;
+}
+.logo {
+    font-size: 38px;
+    font-weight: bold;
+    padding: -1px;
+    color: #ffd700;
+}
+
+nav a {
+    color: #e0e0e0;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ffd700;
+}
+
+/* Форма для создания паст */
+.create-paste {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 600px;
+}
+
+.create-paste h1 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    color: #ffd700;
+}
+
+.create-paste form textarea {
+    height: 100px;
+}
+
+.create-paste form input, .create-paste form textarea {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+.create-paste form button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #ffd700;
+    color: #1f1f1f;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.create-paste form button:hover {
+    background-color: #ffae00;
+}
+
+/* Список паст */
+.pastes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.paste-card {
+    background-color: #333;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: left;
+}
+
+.paste-card:hover {
+    transform: translateY(-5px);
+}
+
+.paste-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 5px;
+}
+
+.paste-meta {
+    font-size: 0.9em;
+    color: #a0a0a0;
+    margin-bottom: 15px;
+}
+
+.paste-content {
+    font-size: 1.1em;
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.like-button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #ffd700;
+    color: #121212;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+}
+
+.like-button:hover {
+    background-color: #e6c200;
+}
+
+
+.like-button svg {
+    margin-right: 5px;
+}
+
+footer {
+    background-color: #1f1f1f;
+    color: #a0a0a0;
+    text-align: center;
+    padding: 15px 0;
+    width: 100%;
+    border-top: 2px solid #ffd700;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.paste-detail {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.open-button {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 10px 15px;
+    background-color: #ffd700;
+    color: #121212;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #e6c200;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #b3b3ff;
+    margin-bottom: 20px;
+}
+
+.links {
+    font-size: 1.2rem;
+    margin-top: 15px;
+}
+
+.links a {
+    color: #a0a0ff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.links a:hover {
+    color: #ffd700;
+}
+
+.notice {
+    font-size: 1.1rem;
+    color: #cccccc;
+    margin-top: 15px;
+}
+
+.notice a {
+    color: #ffae42;
+    text-decoration: none;
+}
+
+.notice a:hover {
+    color: #ffd700;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form input[type="text"],
+form textarea {
+    width: 80%;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #ffd700;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+form button:hover {
+    background-color: #e5b800;
+}
+
+.pastes-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.past-list h2 {
+    font-size: 1.8rem;
+    color: #b3b3ff;
+    margin-bottom: 20px;
+}
+
+.paste {
+    background-color: #333;
+    color: #e0e0e0;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border-left: 4px solid #ffd700;
+}
+
+.paste h3 {
+    font-size: 1.4rem;
+    color: #ffd700;
+}
+
+/* Общие стили для текста и ссылок */
+.login-prompt {
+    text-align: center;
+    font-size: 2em;
+    font-family: 'Arial', sans-serif; /* Можно заменить на другой шрифт, например, 'Roboto' */
+    color: #e6e6e6; /* Легкий серый цвет для текста */
+    margin-top: 2px;
+}
+
+/* Стили для ссылок */
+.login-prompt a {
+    color: #ffcc33; /* Насыщенный оранжевый цвет */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.1s ease;
+}
+
+/* Эффекты при наведении на ссылки */
+.login-prompt a:hover {
+    color: #ff9933; /* Темно-оранжевый цвет при наведении */
+    text-decoration: underline;
+    transform: scale(1.05); /* Легкое увеличение при наведении */
+}
+
+/* Общие стили для текста и ссылок */
+.welcome-prompt {
+    text-align: center;
+    font-size: 1.4em;
+    font-family: 'Arial', sans-serif; /* Можно заменить на другой шрифт, например, 'Roboto' */
+    color: #e6e6e6; /* Легкий серый цвет для текста */
+}
+
+/* Стили для ссылок */
+.welcome-prompt a {
+    color: #ffcc33; /* Насыщенный оранжевый цвет */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.1s ease;
+}
+
+/* Эффекты при наведении на ссылки */
+.welcome-prompt a:hover {
+    color: #ff9933; /* Темно-оранжевый цвет при наведении */
+    text-decoration: underline;
+    transform: scale(1.05); /* Легкое увеличение при наведении */
+}
+
+nav a.active {
+    font-weight: bold;
+    color: #4CAF50; /* Adjust the color to highlight the active link */
+}
+
+.search-container {
+    position: relative;
+}
+
+.search-container input[type="text"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.search-container button {
+    padding: 5px 10px;
+    margin-left: 5px;
+    border-radius: 5px;
+    background-color: #ffcc33;
+    border: none;
+    color: #000;
+    cursor: pointer;
+}
+
+
+.paste-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+}
+
+
+.profile-container {
+    width: 80%;
+    max-width: 800px;
+    background-color: #282828;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+h1 {
+    color: #ffd700;
+    margin-bottom: 20px;
+}
+
+.pastes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.paste-card h2 {
+    color: #ffd700;
+    font-size: 1.2em;
+    margin-bottom: 8px;
+}
+
+.paste-card p {
+    color: #dcdcdc;
+    font-size: 1em;
+}
+
+
+
+
+

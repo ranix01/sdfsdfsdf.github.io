@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Паста</title>
+</head>
+<body>
+<div class="main-container">
+    <div class="paste-card">
+        <div class="paste-title">{{ paste.title }}</div>
+        <div class="paste-meta">{{ paste.date.strftime('%d.%m.%Y, %H:%M:%S') }} | Автор: {{ paste.author }}</div>
+        <div class="paste-content">{{ paste.content }}</div>
+        <button id="like-button" class="like-button">Лайк {{ paste.likes }}</button>
+        <a href="/" class="back-button">← Назад</a>
+    </div>
+</div>
+
+<footer>
+    © 2024 InfoShare. Все права защищены.
+</footer>
+
+<script>
+    document.getElementById("like-button").addEventListener("click", function() {
+        fetch("/like/{{ paste.id }}", { method: "POST" })
+            .then(response => response.json())
+            .then(data => {
+                if (data.likes !== undefined) {
+                    document.getElementById("like-button").textContent = `Лайк ${data.likes}`;
+                }
+            })
+            .catch(error => console.error("Ошибка:", error));
+    });
+</script>
+</body>
+</html>

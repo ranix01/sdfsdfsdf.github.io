@@ -1,0 +1,11 @@
+<form method="POST" action="{{ url_for('create_paste') }}">
+    <input type="text" name="title" placeholder="Title" required><br>
+    <textarea name="content" placeholder="Content" required></textarea><br>
+    <select name="category_id">
+        <option value="" selected>No Category</option>
+        {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Create Paste</button>
+</form>
